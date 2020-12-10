@@ -26,6 +26,11 @@ body {
   justify-content: center;
 }
 
+#content{
+    display: flex;
+    flex-direction: column;
+}
+
 .Characters {
   display: flex;
   flex-wrap: wrap;
@@ -114,6 +119,14 @@ body {
   width: 20px;
   height: 20px;
   animation: spin 2s linear infinite;
+}
+
+#button_getCaracter{
+    width: 30%;
+    padding: .5em;
+    border-radius: 20px;
+    outline: none;
+    align-self: center;
 }
 
 @keyframes spin {
