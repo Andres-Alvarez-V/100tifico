@@ -1,39 +1,19 @@
-{
-  "language": "node_js",
-  "os": [
-    "linux"
-  ],
-  "dist": "xenial",
-  "cache": {
-    "directories": [
-      "~/.npm"
-    ]
-  },
-  "node_js": [
-    "-'14.15.1'"
-  ],
-  "git": {
-    "depth": 3
-  },
-  "script": [
-    "-yan build"
-  ],
-  "deploy": [
-    {
-      "provider": "pages",
-      "strategy": "git",
-      "edge": true,
-      "commit_message": "Deploy Realese",
-      "on": {
-        "branch": [
-          "master"
-        ]
-      },
-      "skip_cleanup": true,
-      "keep_history": true,
-      "token": "$GITHUB_TOKEN",
-      "local_dir": "dist/",
-      "target_branch": "gh-pages"
-    }
-  ]
-}
+language: node_js
+node_js: -12.20.0
+cache: 
+  directories:
+    - ~/.npm
+git:
+  depth: 3
+script:
+  - yarn build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local-dir: dist/
+  target-branch: gh-pages
+  commit_message: "Deploy Release"
+  on:
+    branch: master
