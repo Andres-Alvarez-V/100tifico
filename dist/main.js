@@ -1,15 +1,1 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is not neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
-/******/ (() => { // webpackBootstrap
-/*!**********************!*
-  !*** ./src/index.js ***!
-  \**********************/
-eval("\n\n//# sourceURL=webpack://cientifico/./src/index.js?");
-/******/ })()
-;
+(()=>{"use strict";const n="https://rickandmortyapi.com/api/character",a=async function(a){const e=a?`${n}/${a}`:n;try{const n=await fetch(e);return await n.json()}catch(n){console.log("fetch error",n)}},e=function(){return'\n    <div class="Error404">\n        <h2>Error 404</h2>\n    </div>\n    '},t=function(){return location.hash.slice(1).toLocaleLowerCase().split("/")[1]||"/"},s={"/":async function(){return`\n    <div class="Characters">\n        ${(await a()).results.map((n=>`\n        <article class="Character-item">\n            <a href="#/${n.id}/">\n                <img src=${n.image} alt="${n.name}">\n                <h2>${n.name}</h2>\n            </a>\n        </article>\n        `)).join("")}\n\n        \n    </div>\n    `},"/:id":async function(){const n=t(),e=await a(n);return`\n        <div class="Characters-inner">\n            <article class="Characters-card">\n                <img src="${e.image}" alt="${e.name}">\n                <h2>${e.name}</h2>\n            </article>\n            <article class="Characters-card">\n                <h3>Episode: <span>${e.episode.length}</span></h3>\n                <h3>Status: <span>${e.status}</span></h3>\n                <h3>Species: <span>${e.species}</span></h3>\n                <h3>Gender: <span>${e.gender}</span></h3>\n                <h3>Origin: <span>${e.origin.name}</span></h3>\n                <h3>Last  Location: <span>${e.location.name}</span></h3>\n\n            </article>\n        </div>\n    `},"/contact":"Contact"},i=async()=>{const n=document.getElementById("header")||null,a=document.getElementById("content")||null;n.innerHTML=await'\n    <div class= "Header-main">\n        <div class="Header-logo">\n            <h1>\n                <a href="/">\n                    100tifi.co\n                </a>\n            </h1>\n        </div>\n        <div class="Header-nav">\n            <a href="#/about/">\n                about\n            </a>\n        </div>\n    </div>\n    ';let i=t(),r=await function(n){return n.length<=3?"/"===n?n:"/:id":`/${n}`}(i),c=s[r]?s[r]:e;a.innerHTML=await c()};window.addEventListener("load",i),window.addEventListener("hashchange",i)})();
