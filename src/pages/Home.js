@@ -2,9 +2,10 @@ import getData from '../utils/getData';
 
 async function Home (){
 
-    const characters = await getData();
+
+    const characters = await getData(1, 'home');
     const view = `
-    <div class="Characters">
+    <div class="Characters" id="characters" >
         ${characters.results.map(character => `
         <article class="Characters-item">
             <a href="#/${character.id}/">
@@ -14,10 +15,12 @@ async function Home (){
         </article>
         `).join('')}
 
-        
     </div>
+    <button id="button_getCaracter">Cargar mas</button>
     `;
+
     return view;
 }
+
 
 export default Home;
